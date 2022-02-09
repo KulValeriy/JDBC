@@ -1,15 +1,25 @@
 package jm.task.core.jdbc;
 
+import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 
 public class Main {
+//    private UserService userService;
+//
+//    public Main (UserService userService) {
+//        this.userService = userService;
+//    }
+
     public static void main(String[] args) {
 
         System.out.println();
         // реализуйте алгоритм здесь
-        UserService userService = new UserServiceImpl();
+
+        UserService userService = new UserServiceImpl(new UserDaoJDBCImpl());
+        //UserService userService = new UserServiceImpl();
+
         userService.createUsersTable();
 
         User user1 = new User("Valery", "Kuleshov", (byte) 28);
